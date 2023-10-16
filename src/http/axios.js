@@ -16,7 +16,7 @@ axiosAuth.interceptors.request.use(
 		config.headers = config.headers ?? {};
 		if (!config.headers["Authorization"]) {
 			config.headers["Authorization"] = `Bearer ${localStorage.getItem(
-				"access_token"
+				"encodedToken"
 			)}`;
 		}
 		return config;
