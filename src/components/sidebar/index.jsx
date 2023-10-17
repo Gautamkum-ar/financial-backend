@@ -3,16 +3,21 @@ import { NavLink } from "react-router-dom";
 const navItems = [
 	{
 		id: 1,
-		name: "Financial Management",
+		name: "Financial ",
 		route: "/",
 	},
 	{
 		id: 2,
-		name: "Expense Management",
+		name: "Expense ",
 		route: "/expenses",
 	},
 	{
 		id: 3,
+		name: "Saving",
+		route: "/saving",
+	},
+	{
+		id: 4,
 		name: "Reporting",
 		route: "/reports",
 	},
