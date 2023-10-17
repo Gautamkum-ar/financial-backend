@@ -1,15 +1,19 @@
 import {
 	ADD_EXPENSE,
 	ADD_INCOME,
+	ADD_SAVING,
 	FILTER,
 	FILTER_EXPENSE,
+	FILTER_SAVING,
 	LOADING,
 	LOAD_EXPENSE,
 	LOAD_INCOME,
 	LOAD_PROFILE,
+	LOAD_SAVING,
 	LOGIN,
 	SORTING,
 	SORTING_EXPENSE,
+	SORT_SAVING,
 } from "./const";
 
 const initalState = {
@@ -21,6 +25,8 @@ const initalState = {
 	incomeData: [],
 	expenseData: [],
 	resExpense: [],
+	savingData: [],
+	resSaving: [],
 };
 
 export const financialReducer = (state = initalState, { type, payload }) => {
@@ -121,6 +127,44 @@ export const financialReducer = (state = initalState, { type, payload }) => {
 			return {
 				...state,
 				expenseData: sortedExpense,
+			};
+		}
+		case LOAD_SAVING: {
+			return {
+				...state,
+				savingData: payload,
+				isLoading: false,
+				resSaving: payload,
+			};
+		}
+		case ADD_SAVING: {
+			return {
+				...state,
+				savingData: [...state.savingData, payload],
+				isLoading: false,
+			};
+		}
+		case FILTER_SAVING: {
+			const data = [...state.resSaving];
+			const filterdata = data.filter((item) =>
+				item.category.toLowerCase().includes(payload.toLowerCase())
+			);
+			return {
+				...state,
+				savingData: payload === "" ? state.resSaving : filterdata,
+			};
+		}
+		case SORT_SAVING: {
+			const sortedSaving = [...state.savingData].sort((a, b) => {
+				if (payload === "LowToHigh") {
+					return a.amount - b.amount;
+				} else if (payload === "HighToLow") {
+					return b.amount - a.amount;
+				}
+			});
+			return {
+				...state,
+				savingData: sortedSaving,
 			};
 		}
 		default: {

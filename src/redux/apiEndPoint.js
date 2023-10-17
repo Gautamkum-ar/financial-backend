@@ -5,3 +5,5 @@ export const apiaddIncome = "/income/add-income";
 export const apiGetIncome = "/income/incomes";
 export const apiAddExpense = "/expense/add-expense";
 export const apiLoadExpense = "/expense/expenses";
+export const apiAddSaving = "/savings/add-saving";
+export const apiGetSaving = "/savings/savings";

@@ -13,3 +13,7 @@ export const SORTING_EXPENSE = "sort Expense data";
 export const FILTER_EXPENSE = "filter Expense data";
 export const ADD_EXPENSE = "add expense";
 export const LOAD_EXPENSE = "load expense";
+export const ADD_SAVING = "add saving data";
+export const LOAD_SAVING = "load saving data";
+export const FILTER_SAVING = "filter saving";
+export const SORT_SAVING = "sort saving";

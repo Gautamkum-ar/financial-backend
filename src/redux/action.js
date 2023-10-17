@@ -1,8 +1,10 @@
 import { axiosAuth, axiosNoAuth } from "../http/axios";
 import {
 	apiAddExpense,
+	apiAddSaving,
 	apiGetIncome,
 	apiGetProgile,
+	apiGetSaving,
 	apiLoadExpense,
 	apiLogin,
 	apiaddIncome,
@@ -10,11 +12,13 @@ import {
 import {
 	ADD_EXPENSE,
 	ADD_INCOME,
+	ADD_SAVING,
 	ERROR,
 	LOADING,
 	LOAD_EXPENSE,
 	LOAD_INCOME,
 	LOAD_PROFILE,
+	LOAD_SAVING,
 	LOGIN,
 } from "./const";
 
@@ -75,6 +79,25 @@ export const getExpense = () => async (dispatch) => {
 		dispatch({ type: LOADING });
 		const response = await axiosNoAuth.get(apiLoadExpense);
 		dispatch({ type: LOAD_EXPENSE, payload: response.data.data });
+	} catch (error) {
+		dispatch({ type: ERROR });
+	}
+};
+export const addSaving = (saving) => async (dispatch) => {
+	try {
+		dispatch({ type: LOADING });
+		const response = await axiosNoAuth.post(apiAddSaving, saving);
+		dispatch({ type: ADD_SAVING, payload: response.data.data });
+	} catch (error) {
+		dispatch({ type: ERROR });
+	}
+};
+
+export const getSaving = () => async (dispatch) => {
+	try {
+		dispatch({ type: LOADING });
+		const response = await axiosNoAuth.get(apiGetSaving);
+		dispatch({ type: LOAD_SAVING, payload: response.data.data });
 	} catch (error) {
 		dispatch({ type: ERROR });
 	}
